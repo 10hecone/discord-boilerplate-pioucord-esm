@@ -1,0 +1,11 @@
+{
+    "dev":{ 
+        "devId": [],
+        "devGuild": "",
+        "clientLock": false
+    },
+    "client": {
+        "TOKEN": "",
+        "presence": "dnd"
+    }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "boilerplate-djs14-esm",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "16.15.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "dayjs": "^1.10.7",
+    "discord.js": "^14.1.2",
+    "dotenv": "^16.0.0",
+    "node-fetch": "^3.2.10",
+    "path": "^0.12.7"
+  }
+}
