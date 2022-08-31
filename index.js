@@ -4,10 +4,12 @@
  */
 
 import { Client, Collection, IntentsBitField, } from 'discord.js';
-import inquirer from 'inquirer';
 import { promptOutput } from './utils/Readline.js';
+import yaml from 'js-yaml'
+import inquirer from 'inquirer';
 import * as Logger from './utils/Logger.js';
-import token from './config.json' assert { type: "json" };
+import * as fs from 'node:fs';
+const config = yaml.load(fs.readFileSync('./config.yaml', 'utf-8'))
 
 export const client = new Client({
     intents: [
@@ -27,7 +29,7 @@ Examples: ['commands', 'buttons', 'modal', 'select']
 Examples: ['EventUtil', 'CommandUtil', 'ModalUtil', 'ButtonUtil']
 */
 for (const handler of ['EventUtil', 'CommandUtil']) {
-    await import(`./utils/handlers/${handler}.js`).then(c => c.default(client));
+    await import(`./utils/handlers/${handler}.js`).then(c => c.default(client, Logger, fs, config));
 };
 
 /*
@@ -53,18 +55,19 @@ inquirer
             type: 'list',
             name: 'execute',
             choices: ['Start', 'Exit'],
-            message: 'Qu\'elle action vous voulez lancée ?',
+            message: 'What action do you want to launch?',
             default: 'Start'
         }
     )
     .then(response => {
         switch (response.execute.toLowerCase()) {
             case 'start':
-                console.log(`Commande reçu: ${response.execute.toLowerCase()} lancée!`);
-                client.login(token.client.TOKEN);
-                setTimeout(() => {
-                    promptOutput();
-                }, 1000);
+                console.log(`Command receveid: ${response.execute.toLowerCase()} start!`);
+                client.login(config.client.TOKEN).then(() => {
+                    setTimeout(() => {
+                        promptOutput();
+                    }, 1000)
+                });
             break;
             case 'exit':
                 client.destroy()

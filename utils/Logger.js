@@ -38,4 +38,4 @@ function write(content, tagColor, bgTagColor, tag, error = false) {
         .replace('{txt}', chalk.white(content));
 
     stream.write(item)
-}
+};

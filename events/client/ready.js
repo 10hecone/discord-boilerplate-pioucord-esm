@@ -1,10 +1,9 @@
 import * as Logger from '../../utils/Logger.js';
-import config from '../../config.json' assert {type: 'json'};
 
 export default {
     name: 'ready',
     once: true,
-    async execute(client) {
+    async execute(client, config) {
         const guildsCount = await client.guilds.fetch();
         const userCount = await client.guilds.cache.reduce((a, g) => a + g.memberCount, 0);
         const dev = client.guilds.cache.get(config.dev.devGuild);

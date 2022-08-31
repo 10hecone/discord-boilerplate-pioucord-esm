@@ -1,7 +1,4 @@
-import * as fs from 'node:fs';
-import * as Logger from '../Logger.js';
-
-export default async (client) => {
+export default async (client, Logger, fs) => {
     for (const dir of fs.readdirSync('./buttons/')) {
         for await (const buttonFile of fs.readdirSync(`./buttons/${dir}/`)) {
 

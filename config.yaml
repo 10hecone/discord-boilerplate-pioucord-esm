@@ -1,0 +1,13 @@
+## Config File
+
+---
+# Configuration of options and development
+dev:
+  devId: ['1001867062634889267']
+  devGuild: '1001867062634889267'
+  clientLock: false 
+
+# Client-side configuration
+client:
+  TOKEN: 'MTAwODg5NTc1NDk1NTM5NTE0NQ.GS4EUW.fQQxv0kE4pbjiKiNRIuSVWvk2-nVOX4xIEcqk8'
+  presence: dnd
