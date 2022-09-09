@@ -11,16 +11,13 @@
     "node": "16.15.1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Hecone",
   "license": "ISC",
   "type": "module",
   "dependencies": {
     "chalk": "^4.1.2",
     "dayjs": "^1.10.7",
     "discord.js": "^14.1.2",
-    "dotenv": "^16.0.0",
-    "js-yaml": "^4.1.0",
-    "node-fetch": "^3.2.10",
-    "path": "^0.12.7"
+    "js-yaml": "^4.1.0"
   }
 }

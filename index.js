@@ -4,12 +4,10 @@
  */
 
 import { Client, Collection, IntentsBitField, } from 'discord.js';
-import { promptOutput } from './utils/Readline.js';
-import yaml from 'js-yaml'
-import inquirer from 'inquirer';
+import yaml from 'js-yaml';
 import * as Logger from './utils/Logger.js';
 import * as fs from 'node:fs';
-const config = yaml.load(fs.readFileSync('./config.yaml', 'utf-8'))
+const config = yaml.load(fs.readFileSync('./config.yaml', 'utf-8'));
 
 export const client = new Client({
     intents: [
@@ -23,7 +21,7 @@ export const client = new Client({
 /* If you have a new interaction specify here the type
 Examples: ['commands', 'buttons', 'modal', 'select']
 */
-['commands' ].forEach(x => client[x] = new Collection());
+['commands'].forEach(x => client[x] = new Collection());
 
 /* If you have a new interaction specify here the util
 Examples: ['EventUtil', 'CommandUtil', 'ModalUtil', 'ButtonUtil']
@@ -35,42 +33,21 @@ for (const handler of ['EventUtil', 'CommandUtil']) {
 /*
 * Process with Logger 
 */
-process.on('warning', (...args) => { Logger.warn(...args) });
+process.on('warning', (...args) => { 
+    Logger.warn(...args) 
+});
 
 process.on('exit', code => {
     Logger.client(`The process stopped with the code: ${code}!`);
 });
 
+process.on('uncaughtException', (err, origin) => {
+    Logger.warn(`UNCAUGHT_EXCEPTION: Caught exception [${err}]\n` + `Exception origin [${origin}]`)
+});
+
 process.on('unhandledRejection', (reason, promise) => {
-    Logger.warn(`UNHANDLED_REJECTION: ${reason}`);
+    Logger.warn(`UNHANDLED_REJECTION: Promise [${promise}]\n` + `Reason [${reason}]`);
     console.log(promise);
 });
 
-/*
-* The inquirer module allows to manage the bot
-*/
-inquirer
-    .prompt(
-        {
-            type: 'list',
-            name: 'execute',
-            choices: ['Start', 'Exit'],
-            message: 'What action do you want to launch?',
-            default: 'Start'
-        }
-    )
-    .then(response => {
-        switch (response.execute.toLowerCase()) {
-            case 'start':
-                console.log(`Command receveid: ${response.execute.toLowerCase()} start!`);
-                client.login(config.client.TOKEN).then(() => {
-                    setTimeout(() => {
-                        promptOutput();
-                    }, 1000)
-                });
-            break;
-            case 'exit':
-                client.destroy()
-            break;
-        };
-});
+client.login(config.client.TOKEN);
