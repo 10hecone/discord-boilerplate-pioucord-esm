@@ -1,0 +1,13 @@
+{
+  "client": {
+    "TOKEN": "",
+    "whitelist": [""],
+    "user": {
+      "id": ""
+    }
+  },
+
+  "dev": {
+    "devGuild": [""]
+  }
+}

@@ -1,23 +1,13 @@
 {
-  "name": "boilerplate-djs14-esm",
+  "name": "boilerplate-pioucord-esm",
   "version": "0.0.0",
-  "description": "",
+  "description": "Boilerplate for Pioucord with ESM",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
-  },
-  "engines": {
-    "node": "16.15.1"
-  },
   "keywords": [],
   "author": "Hecone",
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "chalk": "^4.1.2",
-    "dayjs": "^1.10.7",
-    "discord.js": "^14.1.2",
-    "js-yaml": "^4.1.0"
+    "pioucord": "^1.1.4"
   }
 }
