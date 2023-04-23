@@ -4,7 +4,7 @@ import * as fs from 'node:fs';
 import config from './config.json' assert { type: 'json' };
 
 export const client = new Client({     
-	intents: ['Guilds', 'GuildMessages', 'MessageContent', 'GuildMembers'],
+	intents: 3276799,
 });
 
 ['commands'].forEach(x => client[x] = new Map());
