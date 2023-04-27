@@ -8,8 +8,7 @@ export default {
                 if (cmd?.whitelistOnly === true) {
                     if(!config.client.whitelistOnly.includes(interaction.member.user.id)) return functions.reply(interaction, {embeds: [{title: "Error", description: "You don't have the permission to use this command!"}]});
                 };
-                Object.assign(interaction, {createdTimestamp: Date.now()});
-                cmd.runInteraction(client, interaction, functions, config);
+                return cmd.runInteraction(client, interaction, functions, config);
             },
             found() {
                 return functions.reply(interaction, {embeds: [{title: "Error", description: "This command doesn't exist!"}]});
