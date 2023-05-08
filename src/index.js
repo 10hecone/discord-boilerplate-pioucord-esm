@@ -1,16 +1,18 @@
 import { Client } from 'pioucord';
 import { func } from "./utils/functions.js";
 import * as fs from 'node:fs';
-import config from './config.json' assert { type: 'json' };
+import config from '../config.json' assert { type: 'json' };
 
 export const client = new Client({     
 	intents: 3276799,
 });
 
-['commands'].forEach(x => client[x] = new Map());
+for (const key of ['commands']) {
+    client[key] = new Map();
+}
 
 for (const handler of ['EventUtil', 'CommandUtil']) {
-    await import(`./utils/handlers/${handler}.js`).then(c => c.default(client, fs, config, func));
+    await import(`./utils/handlers/${handler}.js`).then(c => c.handler(client, fs, config, func));
 };
 
 process.on('exit', code => {

@@ -2,7 +2,7 @@
   "name": "boilerplate-pioucord-esm",
   "version": "0.0.0",
   "description": "Boilerplate for Pioucord with ESM",
-  "main": "index.js",
+  "main": "src/index.js",
   "keywords": [],
   "author": "Hecone",
   "license": "ISC",

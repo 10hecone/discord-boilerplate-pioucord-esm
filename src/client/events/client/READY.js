@@ -1,7 +1,7 @@
 import { Routes } from "pioucord";
 
-export default {
-    name: 'READY',
+export const event = {
+    name: "READY",
     once: true,
     async execute(client, config) {
         for(const cmd of client.commands) {
