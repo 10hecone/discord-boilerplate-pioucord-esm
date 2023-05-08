@@ -7,7 +7,12 @@
   "author": "Hecone",
   "license": "ISC",
   "type": "module",
+  "prettier": "@vic1707/prettier",
   "dependencies": {
     "pioucord": "^1.1.4"
+  },
+  "devDependencies": {
+    "@vic1707/prettier": "^1.1.1",
+    "prettier": "^2.8.8"
   }
 }
